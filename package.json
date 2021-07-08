@@ -20,6 +20,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "moment": "^2.29.1",
-    "mongoose": "^5.12.14"
+    "mongodb": "^3.6.8",
+    "mongoose": "^5.13.2",
+    "nodemon": "^2.0.9"
   }
 }

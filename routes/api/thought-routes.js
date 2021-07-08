@@ -9,34 +9,24 @@ const {
   removeReaction
 } = require('../../controllers/thought-controller');
 
-// API route to add a thought
-router.route('/:userId').post(addThought);
+// GET and POST request to get and add thoughts
+router.route('/')
+    .get(getAllThoughts)
+    .post(addThought);
 
-// API route to render all thoughts
-router
-  .route('/')
-  .get(getAllThoughts);
+// GET, PUT, and DELETE request to render, update, and remove thoughts
+router.route('/:id')
+    .get(getThoughtById)
+    .put(updateThought)
+    .delete(removeThought);
 
-// API route to render and update a thought by id
-router
-  .route('/:userId/:thoughtId')
-  .get(getThoughtById)
-  .put(updateThought);
+// POST route to add reactions
+router.route('/:thoughtId/reactions')
+    .post(addReaction);
 
-// API route to delete a thought by id
-router
-  .route('/:thoughtId')
-  .delete(removeThought);
-
-// API route to add a reaction
-router
-  .route('/:thoughtId/reactions/')
-  .post(addReaction);
-  
-// API route to remove a reaction by id
-router
-  .route('/:thoughtId/reactions/:reactionId')
-  .delete(removeReaction);
+// DELETE route to remove reactions
+router.route('/:thoughtId/:reactionId')
+    .delete(removeReaction);
 
 
 module.exports = router;
